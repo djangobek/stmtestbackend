@@ -105,3 +105,10 @@ class TestParticipation(models.Model):
 
 
 
+class FileCollection(models.Model):
+    title = models.CharField(max_length=255)
+    file_ids = models.JSONField()  # Store multiple file IDs in one field
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title

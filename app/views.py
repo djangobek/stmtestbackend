@@ -426,3 +426,12 @@ class UpdateTestStatusAPIView(APIView):
                 "error": str(e)
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+@api_view(['GET'])
+def get_files(request):
+    files = FileCollection.objects.first()  # Get the first entry (only one collection)
+    if not files:
+        return Response({"message": "No files available"}, status=404)
+
+    serializer = FileCollectionSerializer(files)
+    return Response(serializer.data)

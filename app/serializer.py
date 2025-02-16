@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import BotUserModel,TelegramChannelModel
+from .models import *
 class BotUserSerializer(ModelSerializer):
     class Meta:
         model = BotUserModel
@@ -128,3 +128,9 @@ class TestStatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Test
         fields = ['test_id','status']
+
+
+class FileCollectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FileCollection
+        fields = ['title', 'file_ids', 'description']

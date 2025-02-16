@@ -23,4 +23,6 @@ urlpatterns = [
     path('test/participationers/post/', TestParticipationCreateAPIView.as_view(), name='create_test_participationer'),
     path('get/test/', TestListAPIView.as_view(), name='get_test'),
     path('update-test-status/<int:test_id>/', UpdateTestStatusAPIView.as_view(), name='update_test_status'),
+    path('files/', get_files, name='get_files'),
 ]
+

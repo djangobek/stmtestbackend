@@ -51,3 +51,19 @@ class TestParticipationAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
         }),
     )
+
+
+@admin.register(FileCollection)
+class FileCollectionAdmin(admin.ModelAdmin):
+    list_display = ('title', 'id')  # Show these fields in the list
+    search_fields = ('title',)  # Enable search by title
+    list_filter = ('title',)  # Add filtering option
+    fields = ('title', 'file_ids', 'description')  # Fields to show in edit page
+
+    def formatted_file_ids(self, obj):
+        """
+        Format file_ids as a readable JSON string
+        """
+        return "\n".join(obj.file_ids) if obj.file_ids else "No files"
+
+    formatted_file_ids.short_description = "File IDs"
